@@ -3,6 +3,8 @@
 Official implementation for paper "EchoBench: Benchmarking Sycophancy in Medical
 Large Vision Language Models"
 
+Before start, please download "EchoBench.tsv" and "EchBenchMT.tsv" from our official huggingface repository.
+
 ============open-source_models============
 
 For experiments on open-source models, our implementation is built upon the VLMEvalkit framework.
