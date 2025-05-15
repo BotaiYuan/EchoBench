@@ -5,7 +5,7 @@ Large Vision Language Models"
 
 ============open-source_models============
 
-For open-source models, our implementation is built upon the VLMEvalkit framework.
+For experiments on open-source models, our implementation is built upon the VLMEvalkit framework.
 
 1. Navigate to the VLMEval directory
 
