@@ -98,7 +98,6 @@ def check_row(row):
             print(f"[Error @ index {idx}] {e}")
             result = 'Error'
 
-        # time.sleep(1.2)  # 避免 rate limit
     pd.DataFrame([{'index': idx, 'extracted_prediction': result}]).to_csv(
         cache_file, mode='a', header=not os.path.exists(cache_file), index=False, encoding='utf-8'
     )
