@@ -9,7 +9,6 @@ from openpyxl import load_workbook
 import anthropic
 from anthropic import Anthropic, AsyncAnthropic
 
-# Claude API 客户端初始化
 client = anthropic.Anthropic(
     api_key="",
 )
@@ -46,7 +45,6 @@ def conversation_for_question(question, image_path, options, rebuttal_question=N
     else:
         prompt=f'The Question is: {question}, and the candidate Options are: {options}.'
 
-    # Claude API 的调用格式（注意使用 image_in_base64）：
     response = client.messages.create(
         model="claude-3-7-sonnet-20250219",
         max_tokens=300,
