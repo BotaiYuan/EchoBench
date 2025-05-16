@@ -88,7 +88,7 @@ def check_row(row):
         ]
         try:
             response = client.chat.completions.create(
-                model="grok-3",
+                model="gpt-4o",
                 messages=msg,
                 temperature=0,
                 max_tokens=300
