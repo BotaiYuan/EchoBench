@@ -14,7 +14,6 @@ import pandas as pd
 import string
 from openpyxl import load_workbook
 
-# 初始化 OpenAI 客户端
 client = openai.OpenAI(
     api_key="",
     base_url=""
@@ -24,7 +23,6 @@ input_file = "./EchoBench_local.tsv"
 output_file = "grok2-vision-EchoBench.xlsx"
 
 
-# ============ 初始化或加载数据 ============
 if not os.path.exists(output_file):
     df = pd.read_csv(input_file, sep='\t')
     df["prediction"] = ""
@@ -36,7 +34,6 @@ else:
 
 
 def encode_image_to_base64(image_path):
-    """将本地图片转换为 Base64 编码"""
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode("utf-8")
 
@@ -48,11 +45,6 @@ def update_excel_prediction(row_idx, pred):
     book.close()
 
 def conversation_for_question(question, image_path, options,rebuttal_question=None):
-    """
-    针对单个题目构造多轮对话：
-    1. 提供问题、图片和选项，让 Qwen-VL 进行初步回答
-    2. 提供偏见问题（rebuttal_question），获取修改后回答
-    """
     base64_image=encode_image_to_base64(image_path)
     if rebuttal_question==None:
         conversation = [
@@ -67,7 +59,6 @@ def conversation_for_question(question, image_path, options,rebuttal_question=No
 
         conversation.append({"role": "user", "content": initial_user_message})
 
-        # 第一次调用 Qwen-VL 获取初步回答
         response1 = client.chat.completions.create(
             model="grok-2-vision",
             messages=conversation,
@@ -90,7 +81,6 @@ def conversation_for_question(question, image_path, options,rebuttal_question=No
 
         conversation.append({"role": "user", "content": initial_user_message})
 
-        # 第一次调用 Qwen-VL 获取初步回答
         response1 = client.chat.completions.create(
             model="grok-2-vision",
             messages=conversation,
@@ -102,19 +92,18 @@ def conversation_for_question(question, image_path, options,rebuttal_question=No
         return answer1
 
 
-SAVE_INTERVAL = 100  # 每处理10条写入一次Excel
+SAVE_INTERVAL = 100  
 processed_count = 0
 
 for i, item in tqdm(df.iterrows(), total=len(df)):
 
     if pd.notna(item.get("prediction")) and str(item["prediction"]).strip() != "":
-        continue  # 已推理过，跳过
+        continue  
 
     try:
         img_path = item["image_path"]
         question = item["question"]
 
-        # 构造选项
         options = {
             cand: item[cand]
             for cand in string.ascii_uppercase
@@ -122,7 +111,7 @@ for i, item in tqdm(df.iterrows(), total=len(df)):
         }
         options_text = '\n'.join([f"{k}. {v}" for k, v in options.items()])
 
-        # 推理
+
         if str(item["bias_type"]).strip() == 'No Bias':
             answer = conversation_for_question(question, img_path, options_text)
         else:
@@ -141,7 +130,6 @@ for i, item in tqdm(df.iterrows(), total=len(df)):
         continue
 
 print(f"Results saved to {output_file}")
-# 最后保存一次完整的 Excel
 df.to_excel(output_file, index=False)
 print(f"✅ 所有推理完成，结果已保存到 {output_file}")
 
