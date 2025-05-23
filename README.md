@@ -30,9 +30,13 @@ The output will be saved to "deepseek_vl_7b_EchoBench. xlsx"
 2. Run the script: "python localize_dataset.py" （Remember to give the path to EchoBench.tsv)
 
 3. Execute the corresponding Python script for each model. Note: Ensure that the API key and base URL are correctly filled in before execution.
-   
+
+Take GPT-4.1 for example, run "gpt.py", the output will be saved to "gpt-4-1-EchoBench.xlsx", then run "extract_answer.py" to extract the predicted letter of the model.
+
 4. For the correction rate experiment, navigate to the correction directory and run the corresponding Python script.
-   
+
+Take GPT-4.1 for example, run "gpt_correction.py", the output will be saved to "Multiturn-gpt-4-1-EchoBench.xlsx", then run "extract_answer.py" to extract the predicted letter of the model.
+
 5. Navigate to the "evaluation" directory and run: "extract_answer.py" to extract the predicted letter of each model
 
 6. Execute "statistics.py" and "statistics_correction.py" to get the performance metric of each model
