@@ -35,10 +35,8 @@ Take GPT-4.1 for example, run "gpt.py", the output will be saved to "gpt-4-1-Ech
 
 4. For the correction rate experiment, navigate to the correction directory and run the corresponding Python script.
 
-Take GPT-4.1 for example, run "gpt_correction.py", the output will be saved to "Multiturn-gpt-4-1-EchoBench.xlsx", then run "extract_answer.py" to extract the predicted letter of the model.
+Take GPT-4.1 for example, run "gpt_correction.py", the output will be saved to "Multiturn-gpt-4-1-EchoBench.xlsx", then run "extract_answer_correction.py" to extract the predicted letter of the model.
 
-5. Navigate to the "evaluation" directory and run: "extract_answer.py" to extract the predicted letter of each model
-
-6. Execute "statistics.py" and "statistics_correction.py" to get the performance metric of each model
+5. Execute "statistics.py" and "statistics_correction.py" to get the performance metric of each model
 
 
