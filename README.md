@@ -19,6 +19,10 @@ For experiments on open-source models, our implementation is built upon the VLME
 
 AUTO_SPLIT=1 torchrun --nproc-per-node=1 run.py --model deepseek_vl_7b --data EchoBench --verbose --mode infer
 
+The output will be saved to "deepseek_vl_7b_EchoBench. xlsx"
+
+5. Navigate to the "evaluation" directory and run: "extract_answer.py" to extract the predicted letter of the model (remember to change the "model name" and "input file")
+
 ============proprietary_models============
 
 1. Navigate to the api_test directory
