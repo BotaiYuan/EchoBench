@@ -3,7 +3,7 @@
 Official implementation for paper "EchoBench: Benchmarking Sycophancy in Medical
 Large Vision Language Models"
 
-Before start, please download "EchoBench.tsv" and "EchBenchMT.tsv" from our official huggingface repository.
+Before start, please download "EchoBench.tsv" from our official huggingface repository.
 
 ============open-source_models============
 
