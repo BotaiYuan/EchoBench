@@ -21,7 +21,9 @@ AUTO_SPLIT=1 torchrun --nproc-per-node=1 run.py --model deepseek_vl_7b --data Ec
 
 The output will be saved to "deepseek_vl_7b_EchoBench. xlsx"
 
-5. Navigate to the "evaluation" directory and run: "extract_answer.py" to extract the predicted letter of the model (remember to change the "model name" and "input file")
+5. Navigate to the "evaluation" directory in "api_test" and run: "extract_answer.py" to extract the predicted letter of the model (remember to change the "model name" and "input file")
+
+6. Execute "statistics.py" to get the performance metric of each model
 
 ============proprietary_models============
 
